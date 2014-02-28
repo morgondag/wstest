@@ -9,7 +9,7 @@ wss.on('connection', function(ws) {
 	console.log('some dude connected');
 	
 	ws.on('message', function(message) {
-		console.log(ws.port, ' Msg: ',message)
+		console.log(' Msg: ',message)
 		wss.broadcast(message)
 	});
 });
