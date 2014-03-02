@@ -1,4 +1,3 @@
-console.log('############################');
 var WebSocketServer = require('ws').Server;
 
 var wss = new WebSocketServer({
@@ -6,17 +5,14 @@ var wss = new WebSocketServer({
 });
 
 wss.on('connection', function(ws) {
-	console.log('some dude connected');
-	
 	ws.on('message', function(message) {
-		console.log(' Msg: ',message)
+                console.log(message)
 		wss.broadcast(message)
 	});
 });
-
 wss.broadcast = function(data) {
-	console.log(this.clients.length);
 	for (var i in this.clients) {
 		this.clients[i].send(data);
 	}
 };
+console.log('websocket server on port 1337');
